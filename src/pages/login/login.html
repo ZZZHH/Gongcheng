@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary"  hideBackButton="true">
+    <ion-title>登录</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <!--<ion-label fixed>账号</ion-label>-->
+    <ion-icon item-left name="call" color="primary"></ion-icon>
+    <ion-input type="text" placeholder="请输入账号" #username></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon item-left name="key" color="primary"></ion-icon>
+    <ion-input type="password" placeholder="请输入密码" #password></ion-input>
+  </ion-item>
+  <ion-item>
+    <!--<ion-icon item-left name="color-palette" color="primary"></ion-icon>-->
+    <ion-label>类型</ion-label>
+    <ion-select item-right [(ngModel)]="org">
+      <ion-option value="123456">学生</ion-option>
+      <ion-option value="1234">教师</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item no-lines>
+    <label item-left (click)="register()">快速注册</label>
+    <label item-right>忘记密码</label>
+    <!--<ion-toggle></ion-toggle>-->
+  </ion-item>
+
+  <div margin-left="10" margin-right="10">
+    <button ion-button block color="primary" (click)="login(username, password)">
+      登录
+    </button>
+  </div>
+</ion-content>
