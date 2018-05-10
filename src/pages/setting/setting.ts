@@ -5,6 +5,7 @@ import {LoginPage} from "../login/login";
 import {SignPage} from "../sign/sign";
 import {RecordAllPage} from "../record-all/record-all";
 import {ProfilePage} from "../profile/profile";
+import {CommentPage} from "../comment/comment";
 
 /**
  * Generated class for the SettingPage page.
@@ -47,5 +48,8 @@ export class SettingPage {
   }
   profile(){
     this.navCtrl.push(ProfilePage);
+  }
+  postComment(){
+    this.navCtrl.push(CommentPage);
   }
 }

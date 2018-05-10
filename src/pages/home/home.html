@@ -15,25 +15,38 @@
   <div text-center>
     <img class="logo" src="assets/img/shouye.jpg" alt="">
   </div>
-  <ion-row class="quick-actions">
-    <ion-col class="quick-action-item">
-      <a class="shortcut" href="">
-        <img src="assets/img/打卡补签.png" alt="">
-        <div>打卡</div>
-      </a>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <button ion-button icon-right>
+          点 名
+          <ion-icon name="checkbox"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-right>
+          请 假
+          <ion-icon name="pricetags"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-right>
+          课程
+          <ion-icon name="book"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+      <button ion-button icon-right>
+        校 历
+        <ion-icon name="calendar"></ion-icon>
+      </button>
     </ion-col>
-    <ion-col class="quick-action-item">
-      <a class="shortcut" href="" >
-        <img  src="assets/img/签到.png" alt="">
-        <div>签到</div>
-      </a>
-    </ion-col>
-    <ion-col class="quick-action-item">
-      <a class="shortcut" href="">
-        <img  src="assets/img/作业.png" alt="">
-        <div>作业</div>
-      </a>
-    </ion-col>
-  </ion-row>
+    </ion-row>
+  </ion-grid>
+  <ion-list inset>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item }}
+    </button>
+  </ion-list>
 </ion-content>
 

@@ -33,7 +33,6 @@ import {RecordAllPage} from "../pages/record-all/record-all";
 import {RecordAllPageModule} from "../pages/record-all/record-all.module";
 import {ProfilePage} from "../pages/profile/profile";
 import {ProfilePageModule} from "../pages/profile/profile.module";
-
 @NgModule({
   declarations: [
     MyApp,
@@ -45,7 +44,7 @@ import {ProfilePageModule} from "../pages/profile/profile.module";
     //TimelinePage,
     //CreatePage,
     //InvitePage,
-    //InviteModePage
+    //InviteModePage,
   ],
   imports: [
     CommentPageModule,
@@ -80,7 +79,7 @@ import {ProfilePageModule} from "../pages/profile/profile.module";
     RecordPage,
     SignPage,
     RecordAllPage,
-    ProfilePage
+    ProfilePage,
   ],
   providers: [
     StatusBar,

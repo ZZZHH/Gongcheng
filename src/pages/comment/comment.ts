@@ -30,7 +30,7 @@ export class CommentPage {
     console.log('ionViewDidLoad CommentPage');
   }
 
-  defaultTime="2017-08-03";
+  defaultTime="2018-06-03";
   images=new Array();
   getImage(){
     const options: ImagePickerOptions = {
