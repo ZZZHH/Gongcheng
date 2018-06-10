@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {QingjiaPage} from "../qingjia/qingjia";
+import {BaiduMapPage} from "../baidu-map/baidu-map";
+import {CoursePage} from "../course/course";
+import {CommentPage} from "../comment/comment";
 
 @Component({
   selector: 'page-home',
@@ -24,5 +28,13 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
-
+  qingjia(){
+    this.navCtrl.push(QingjiaPage);
+  }
+  course(){
+    this.navCtrl.push(CoursePage);
+  }
+  postComment(){
+    this.navCtrl.push(CommentPage);
+  }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule, NavController} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -33,11 +33,31 @@ import {RecordAllPage} from "../pages/record-all/record-all";
 import {RecordAllPageModule} from "../pages/record-all/record-all.module";
 import {ProfilePage} from "../pages/profile/profile";
 import {ProfilePageModule} from "../pages/profile/profile.module";
+import {AuthenticationCodeProvider} from "../providers/authentication-code/authentication-code";
+import {LocalStorageProvider} from "../providers/local-storage/local-storage";
+import {ForgetPasswordPage} from "../pages/forget-password/forget-password";
+import {ForgetPasswordPageModule} from "../pages/forget-password/forget-password.module";
+import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
+import {NewPage} from "../pages/new/new";
+import {GeolocationProvider} from "../providers/geolocation/geolocation";
+import {HttpSerProvider} from "../providers/http-ser/http-ser";
+import {BaiduMapPage} from "../pages/baidu-map/baidu-map";
+import {Geolocation} from "@ionic-native/geolocation";
+import {BaiduMapPageModule} from "../pages/baidu-map/baidu-map.module";
+import {CoursePage} from "../pages/course/course";
+import {QingjiaPage} from "../pages/qingjia/qingjia";
+import {CoursePageModule} from "../pages/course/course.module";
+import {QingjiaPageModule} from "../pages/qingjia/qingjia.module";
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    //LoginPage,
+    NewPage,
+    // QingjiaPage
+    // BaiduMapPage
+    // LoginPage,
     //RegisterPage,
     //StudentPage,
     //CommentPage,
@@ -47,7 +67,9 @@ import {ProfilePageModule} from "../pages/profile/profile.module";
     //InviteModePage,
   ],
   imports: [
+    QingjiaPageModule,
     CommentPageModule,
+    HttpClientModule,
     LoginPageModule,
     RegisterPageModule,
     StudentPageModule,
@@ -60,6 +82,9 @@ import {ProfilePageModule} from "../pages/profile/profile.module";
     RecordAllPageModule,
     ProfilePageModule,
     BrowserModule,
+    ForgetPasswordPageModule,
+    BaiduMapPageModule,
+    CoursePageModule,
     IonicModule.forRoot(MyApp,{
       backButtonText: '',
     })
@@ -67,6 +92,8 @@ import {ProfilePageModule} from "../pages/profile/profile.module";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    QingjiaPage,
+    CoursePage,
     HomePage,
     LoginPage,
     RegisterPage,
@@ -80,13 +107,21 @@ import {ProfilePageModule} from "../pages/profile/profile.module";
     SignPage,
     RecordAllPage,
     ProfilePage,
+    NewPage,
+
+    // BaiduMapPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ImagePicker,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LocalStorageProvider,
+    AuthenticationCodeProvider,
+    GeolocationProvider,
+    HttpSerProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

@@ -28,8 +28,17 @@
     <ion-icon name="md-arrow-dropdown" item-end></ion-icon>
   </ion-item>
   <ion-item no-lines>
+    <ion-label (click)="getLocationByLatLon()">上课地点</ion-label>
+    <ion-icon name="md-arrow-dropdown" item-end></ion-icon>
+  </ion-item>
+  <ion-item no-lines>
     <textarea placeholder="课程名称" block></textarea>
   </ion-item>
+  <ion-item (click)="getGeolocation()">
+    <button>经纬度定位</button>
+  </ion-item>
+  <ion-item style="color: red" *ngIf="geolocation.latitude">纬度：{{geolocation.latitude}}</ion-item>
+  <ion-item style="color: red" *ngIf="geolocation.longitude">经度：{{geolocation.longitude}}</ion-item>
   <div padding>
     <button ion-button block >上传</button>
   </div>

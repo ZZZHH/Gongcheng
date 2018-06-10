@@ -1,3 +1,44 @@
+<!--&lt;!&ndash;-->
+  <!--Generated template for the RegisterPage page.-->
+
+  <!--See http://ionicframework.com/docs/components/#navigation for more info on-->
+  <!--Ionic pages and navigation.-->
+<!--&ndash;&gt;-->
+<!--<ion-header>-->
+
+  <!--<ion-navbar color="primary">-->
+    <!--<ion-title>注册</ion-title>-->
+  <!--</ion-navbar>-->
+
+<!--</ion-header>-->
+
+
+<!--<ion-content>-->
+  <!--<ion-item>-->
+    <!--<ion-label fixed>账号</ion-label>-->
+    <!--<ion-icon name="heart"></ion-icon>-->
+    <!--<ion-input type="text" placeholder="请输入账号" #username></ion-input>-->
+  <!--</ion-item>-->
+  <!--<ion-item>-->
+    <!--<ion-label fixed>验证码</ion-label>-->
+    <!--<ion-input type="password" placeholder="请输入验证码" #code></ion-input>-->
+    <!--<button item-right ion-button color="danger" medium (click)="getCode()">获取验证码</button>-->
+  <!--</ion-item>-->
+  <!--<ion-item>-->
+    <!--<ion-label fixed>密码</ion-label>-->
+    <!--<ion-input type="password" placeholder="请输入密码" #password></ion-input>-->
+  <!--</ion-item>-->
+  <!--<ion-item no-lines>-->
+    <!--<label item-right (click)="login()">快速登陆</label>-->
+    <!--&lt;!&ndash;<ion-toggle></ion-toggle>&ndash;&gt;-->
+  <!--</ion-item>-->
+
+  <!--<div margin-left="10" margin-right="10">-->
+    <!--<button ion-button block color="primary" (click)="doRegister(username, password,code)">-->
+      <!--注册-->
+    <!--</button>-->
+  <!--</div>-->
+<!--</ion-content>-->
 <!--
   Generated template for the RegisterPage page.
 
@@ -7,35 +48,88 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>注册</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <ion-item>
-    <ion-label fixed>账号</ion-label>
-    <ion-icon name="heart"></ion-icon>
-    <ion-input type="text" placeholder="请输入账号" #username></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>验证码</ion-label>
-    <ion-input type="password" placeholder="请输入验证码" #code></ion-input>
-    <button item-right ion-button color="danger" medium (click)="getCode()">获取验证码</button>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>密码</ion-label>
-    <ion-input type="password" placeholder="请输入密码" #password></ion-input>
-  </ion-item>
-  <ion-item no-lines>
-    <label item-right (click)="login()">快速登陆</label>
-    <!--<ion-toggle></ion-toggle>-->
-  </ion-item>
+<ion-content padding>
+  <div>
+    <ion-slides #registerSlides>
+      <ion-slide>
+        <form #phoneForm="ngForm">
+          <ion-list>
+            <ion-item>
+              <ion-input type="number"  placeholder="请输入手机号码" [(ngModel)]="register.phone" name="phone" required  #phone="ngModel" pattern="^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,3,5-9]))\\d{8}$" ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="phone.invalid && phone.touched">
+              <p [hidden]="!phone.errors?.required">请输入手机号码</p>
+              <p [hidden]="!phone.errors?.pattern">您输入的手机号格式不正确</p>
+            </ion-item>
+          </ion-list>
+          <div>
+            <button type="submit" [disabled]="phoneForm.invalid" ion-button block color="primary" (click)="next()">下一步</button>
+          </div>
+        </form>
+      </ion-slide>
+      <ion-slide>
+        <form #phoneForm1="ngForm">
+          <ion-list>
+            <ion-item>
+              <ion-input type="number" placeholder="请输入验证码" name="code" [(ngModel)] = "register.code" required ></ion-input>
+            </ion-item>
+            <ion-item>
+              <button block color="primary"  (click)="send()" >发送验证码</button>
+            </ion-item>
+          </ion-list>
+          <div>
+            <button ion-button block color="primary" (click)="previous()">上一步</button>
+            <button type="submit" ion-button block [disabled]="phoneForm1.invalid" color="primary" (click)="validateCode()">下一步</button>
+          </div>
+        </form>
+      </ion-slide>
+      <ion-slide>
+        <form #phoneForm2="ngForm">
+          <ion-list>
+            <ion-item>
+              <ion-input class="input" type="string" [(ngModel)]="register.shopName" name="shopName" required #shopName="ngModel" placeholder="请输入姓名"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="shopName.invalid && shopName.touched">
+              <p [hidden]="!shopName.errors?.required">请输入名字</p>
+            </ion-item>
+            <ion-item>s
+              <ion-input  [(ngModel)]="register.email" name="email" required  #email="ngModel" placeholder="请输入电子邮箱"  pattern="^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="email.invalid && email.touched">
+              <p [hidden]="!email.errors?.required">请输入邮箱</p>
+              <p [hidden]="!email.errors?.pattern">您输入的邮箱格式不正确</p>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="register.password" name="password" required  #password="ngModel" placeholder="请输入登入密码"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="password.invalid && password.touched">
+              <p [hidden]="!password.errors?.required">请输入密码</p>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password"  [(ngModel)]="register.confirmPassword" name="confirmPassword" required  #confirmPassword="ngModel"  placeholder="请输入确认密码"></ion-input>
 
-  <div margin-left="10" margin-right="10">
-    <button ion-button block color="primary" (click)="doRegister(username, password,code)">
-      注册
-    </button>
+            </ion-item>
+            <ion-item *ngIf="register.password!=register.confirmPassword">
+              <p >两次密码不一致</p>
+            </ion-item>
+          </ion-list>
+          <div>
+            <button ion-button block color="primary" (click)="previous()">上一步</button>
+            <button ion-button block color="primary"  [disabled]="phoneForm2.invalid" (click)="postdata()">下一步</button>
+          </div>
+        </form>
+      </ion-slide>
+      <ion-slide>
+        <form>
+          <h1>注册成功！！</h1>
+        </form>
+      </ion-slide>
+    </ion-slides>
   </div>
 </ion-content>

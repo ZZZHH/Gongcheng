@@ -6,6 +6,8 @@ import {SignPage} from "../sign/sign";
 import {RecordAllPage} from "../record-all/record-all";
 import {ProfilePage} from "../profile/profile";
 import {CommentPage} from "../comment/comment";
+import {BaiduMapPage} from "../baidu-map/baidu-map";
+import {QingjiaPage} from "../qingjia/qingjia";
 
 /**
  * Generated class for the SettingPage page.
@@ -46,10 +48,17 @@ export class SettingPage {
   records(){
     this.navCtrl.push(RecordAllPage);
   }
+
   profile(){
     this.navCtrl.push(ProfilePage);
   }
   postComment(){
     this.navCtrl.push(CommentPage);
+  }
+  baidu(){
+    this.navCtrl.push(BaiduMapPage);
+  }
+  qingjia(){
+    this.navCtrl.push(QingjiaPage);
   }
 }
