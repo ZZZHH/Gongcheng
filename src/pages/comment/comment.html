@@ -24,22 +24,36 @@
   </ion-row>
   <ion-item no-lines>
     <ion-label>上课日期</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD"  [(ngModel)]="defaultTime"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD"  [(ngModel)]="checkin_time"></ion-datetime>
     <ion-icon name="md-arrow-dropdown" item-end></ion-icon>
   </ion-item>
+  <div>
+    <button ion-button block color="primary" (click)="getCourses()">课程查询</button>
+  </div>
+  <ion-list inset >
+    <ion-item *ngFor="let course of coursess" no-padding="">
+      <h3>{{course.course_name}}</h3>
+      <p>{{course.semester}}</p>
+      <p>{{course.time_site}}</p>
+    </ion-item>
+  </ion-list>
   <ion-item no-lines>
-    <ion-label (click)="getLocationByLatLon()">上课地点</ion-label>
-    <ion-icon name="md-arrow-dropdown" item-end></ion-icon>
+    <!--<textarea placeholder="课程名称" [(ngModel)]="course_name"></textarea>-->
+    <ion-input name="course" placeholder="课程名称" [(ngModel)]="course_name"></ion-input>
   </ion-item>
   <ion-item no-lines>
-    <textarea placeholder="课程名称" block></textarea>
+    <textarea placeholder="输入学号" [(ngModel)]="number"></textarea>
   </ion-item>
+  <ion-item no-lines>
+    <textarea placeholder="上课地点" [(ngModel)]="locname"></textarea>
+  </ion-item>
+  <button ion-button block (click)="getUsers1()">进行签到</button>
   <ion-item (click)="getGeolocation()">
     <button>经纬度定位</button>
   </ion-item>
-  <ion-item style="color: red" *ngIf="geolocation.latitude">纬度：{{geolocation.latitude}}</ion-item>
-  <ion-item style="color: red" *ngIf="geolocation.longitude">经度：{{geolocation.longitude}}</ion-item>
+  <ion-item style="color: #ff0000" *ngIf="geolocation.latitude">纬度：{{geolocation.latitude.toFixed(3)}}</ion-item>
+  <ion-item style="color: #ff0000" *ngIf="geolocation.longitude">经度：{{geolocation.longitude.toFixed(3)}}</ion-item>
   <div padding>
-    <button ion-button block >上传</button>
+    <button ion-button block (click)="addCourse()">上传</button>
   </div>
 </ion-content>

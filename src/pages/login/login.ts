@@ -42,6 +42,7 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
 // import {HomePage} from "../home/home";
 import {NewPage} from "../new/new";
 import {HttpClient} from "@angular/common/http";
+import {Http} from "@angular/http";
 
 /**
  * Generated class for the SignInPage page.
@@ -57,28 +58,29 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LoginPage {
   text:any;
-  signIn = {
-    phone:"",
-    password:""
-  }
+
+    username:"";
+    pwd:"";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private toastCtrl:ToastController,
               private alertCtrl:AlertController,private storage:LocalStorageProvider,
-              public http:HttpClient) {
-    this.signIn.phone="";
+              public http:HttpClient,
+              public http1:Http) {
+    // this.signIn.username="";
   }
-  toSignIn(){
-    let account = this.storage.get('Account',null);
-    let toast = this.toastCtrl.create({
-      message:'用户名或者密码不正确',
-      duration:3000
-    });
-    if (this.signIn.phone!=account.phone || this.signIn.password!=account.password){
-      toast.present();
-    }
-    else {
-      this.navCtrl.setRoot(NewPage);
-    }
-  }
+  // toSignIn(){
+  //   let account = this.storage.get('Account',null);
+  //   let toast = this.toastCtrl.create({
+  //     message:'用户名或者密码不正确',
+  //     duration:3000
+  //   });
+  //   if (this.signIn.phone!=account.phone || this.signIn.password!=account.password){
+  //     toast.present();
+  //   }
+  //   else {
+  //     this.navCtrl.setRoot(NewPage);
+  //   }
+  // }
   toForgotPassword(){
     this.navCtrl.push(ForgetPasswordPage);
   }
@@ -86,18 +88,40 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
   postdata(){
-    var data ={username:'Admin',pwd:'123456'};
-    this.http.post('http://111.230.252.141/ajax/api/login',data)
+    var data ={};
+    this.http.post('http://111.230.252.141/ajax/api/login?username='+this.username+'&pwd='+this.pwd,{})
       .subscribe(
         (val) => {
           console.log("POST call succesful value returned in body",
             val);
+          if(val['success']==false){
+            let alert = this.alertCtrl.create({
+              title: '登录失败!',
+              subTitle: '你的用户名或密码错误!',
+              buttons: ['OK']
+            });
+            alert.present();
+            this.navCtrl.setRoot(LoginPage);
+          }
+          else{
+            var class_name=val['class_name'];
+            this.storage.set('classname',class_name);
+            var Tuid=val['uid'];
+            this.storage.set('Tuid',Tuid);
+            this.navCtrl.setRoot(NewPage);
+          }
         },
         response => {
           console.log("POST call in error", response);
         },
         () => {
-          console.log("The POST observable is now completed.");
+          // this.navCtrl.setRoot(NewPage);
         });
   }
+  // postdata1(){
+  //   var data ={username:'Admin',pwd:'123456'};
+  //   this.http1.post('http://111.230.252.141/ajax/api/login',data)
+  //     .map(res =>
+  //       res.json())
+  // }
 }

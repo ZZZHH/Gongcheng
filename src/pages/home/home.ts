@@ -4,6 +4,8 @@ import {QingjiaPage} from "../qingjia/qingjia";
 import {BaiduMapPage} from "../baidu-map/baidu-map";
 import {CoursePage} from "../course/course";
 import {CommentPage} from "../comment/comment";
+import {KaoqingPage} from "../kaoqing/kaoqing";
+import {AdduserPage} from "../adduser/adduser";
 
 @Component({
   selector: 'page-home',
@@ -34,7 +36,10 @@ export class HomePage {
   course(){
     this.navCtrl.push(CoursePage);
   }
-  postComment(){
-    this.navCtrl.push(CommentPage);
+  kaoqing(){
+    this.navCtrl.push(KaoqingPage);
+  }
+  qiandao(){
+    this.navCtrl.push(CommentPage)
   }
 }

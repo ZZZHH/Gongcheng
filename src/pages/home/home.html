@@ -17,30 +17,30 @@
   </div>
   <ion-grid>
     <ion-row>
-      <ion-col col-3>
-        <button ion-button icon-right >
-          点 名
+      <ion-col col-4="">
+        <button ion-button icon-right (click)="qiandao()">
+          签到
           <ion-icon name="checkbox"></ion-icon>
         </button>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-4="">
         <button ion-button icon-right (click)="qingjia()">
           请 假
           <ion-icon name="pricetags"></ion-icon>
         </button>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-4="">
         <button ion-button icon-right (click)="course()">
           课程
           <ion-icon name="book"></ion-icon>
         </button>
       </ion-col>
-      <ion-col col-3>
-      <button ion-button icon-right >
-        校 历
-        <ion-icon name="calendar"></ion-icon>
-      </button>
-    </ion-col>
+      <!--<ion-col col-3>-->
+      <!--<button ion-button icon-right (click)="kaoqing()">-->
+        <!--考勤-->
+        <!--<ion-icon name="calendar"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-col>-->
     </ion-row>
   </ion-grid>
   <ion-list inset>

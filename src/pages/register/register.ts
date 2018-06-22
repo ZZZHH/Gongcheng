@@ -58,11 +58,11 @@ export class RegisterPage {
     //     });
   }
   postdata(){
-    var data ={phone:'register.phone',password:'register.password'};
-    this.http.post('https://111.230.252.141/ajax/api/v1.0/student',data)
+    var data ={username:'Admin',pwd:'123456'};
+    this.http.post('http://111.230.252.141/ajax/api/login',data)
       .subscribe(
         (val) => {
-          console.log("POST call successful value returned in body",
+          console.log("POST call succesful value returned in body",
             val);
         },
         response => {

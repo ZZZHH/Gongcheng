@@ -14,5 +14,18 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label fixed>班级</ion-label>
+    <ion-input name="password"  placeholder="您所在的班级" [(ngModel)]="aaa"></ion-input>
+  </ion-item>
+  <ion-col>
+    <button ion-button block color="primary" (click)="getCourses()">查询</button>
+  </ion-col>
+  <ion-list inset >
+    <ion-item *ngFor="let course of courses" no-padding="">
+      <h3>{{course.course_name}}</h3>
+      <p>{{course.semester}}</p>
+      <p>{{course.time_site}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

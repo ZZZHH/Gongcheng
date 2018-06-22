@@ -49,6 +49,12 @@ import {CoursePage} from "../pages/course/course";
 import {QingjiaPage} from "../pages/qingjia/qingjia";
 import {CoursePageModule} from "../pages/course/course.module";
 import {QingjiaPageModule} from "../pages/qingjia/qingjia.module";
+import {KaoqingPage} from "../pages/kaoqing/kaoqing";
+import {KaoqingPageModule} from "../pages/kaoqing/kaoqing.module";
+import {Http} from "@angular/http";
+import { RestProvider } from '../providers/rest/rest';
+import {AdduserPage} from "../pages/adduser/adduser";
+import {AdduserPageModule} from "../pages/adduser/adduser.module";
 
 @NgModule({
   declarations: [
@@ -69,7 +75,6 @@ import {QingjiaPageModule} from "../pages/qingjia/qingjia.module";
   imports: [
     QingjiaPageModule,
     CommentPageModule,
-    HttpClientModule,
     LoginPageModule,
     RegisterPageModule,
     StudentPageModule,
@@ -82,9 +87,13 @@ import {QingjiaPageModule} from "../pages/qingjia/qingjia.module";
     RecordAllPageModule,
     ProfilePageModule,
     BrowserModule,
+    HttpClientModule,
     ForgetPasswordPageModule,
     BaiduMapPageModule,
     CoursePageModule,
+    KaoqingPageModule,
+    AdduserPageModule,
+    HttpModule,
     IonicModule.forRoot(MyApp,{
       backButtonText: '',
     })
@@ -108,7 +117,8 @@ import {QingjiaPageModule} from "../pages/qingjia/qingjia.module";
     RecordAllPage,
     ProfilePage,
     NewPage,
-
+    KaoqingPage,
+    AdduserPage,
     // BaiduMapPage,
   ],
   providers: [
@@ -121,7 +131,8 @@ import {QingjiaPageModule} from "../pages/qingjia/qingjia.module";
     AuthenticationCodeProvider,
     GeolocationProvider,
     HttpSerProvider,
-    Geolocation
+    Geolocation,
+    RestProvider
   ]
 })
 export class AppModule {}

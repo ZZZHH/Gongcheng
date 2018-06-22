@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import {SettingPage} from "../pages/setting/setting";
 // import {StudentPage} from "../pages/student/student";
 import {NewPage} from "../pages/new/new";
+import {LoginPage} from "../pages/login/login";
 // import {CoursePage} from "../pages/course/course";
 // import {QingjiaPage} from "../pages/qingjia/qingjia";
 
@@ -16,7 +17,7 @@ import {NewPage} from "../pages/new/new";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = NewPage;
+  rootPage: any = LoginPage;
   platform: any = Platform;
   toast: any = ToastController;
   backButtonPressed: boolean = false;  //用于判断返回键是否触发

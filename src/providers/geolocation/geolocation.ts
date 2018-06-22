@@ -60,7 +60,6 @@ export class GeolocationProvider {
     }else{
       console.log("不支持定位");
     }
-
   }
 
 
